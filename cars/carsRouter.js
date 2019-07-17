@@ -68,10 +68,10 @@ async function validateId(req, res, next) {
 
 async function validateCar(req, res, next) {
    if (Object.keys(req.body).length !== 0 && req.body.constructor === Object) {
-      if (req.body.name && req.body.budget) {
+      if (req.body.VIN && req.body.make && req.body.model && req.body.mileage) {
          next();
       } else {
-         res.status(400).json({ message: "Oh no! the required name and budget fields gone missing" })
+         res.status(400).json({ message: "Oh no! seems like you forgot to include all required fields" })
       }
    } else {
       res.status(400).json({ message: "hmm! no car data for real?" })
